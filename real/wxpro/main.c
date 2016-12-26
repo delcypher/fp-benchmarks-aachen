@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <klee/klee.h>
-#include "wxpro/units.h"
+#include "units.h"
 
 int main(int argc, char** argv) {
   double m;

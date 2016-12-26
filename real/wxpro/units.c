@@ -1,6 +1,7 @@
 #include "units.h"
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h> // AACHEN: For malloc()
 
 // Wind Conversion
 
@@ -118,21 +119,23 @@ double frac( double num )
    return a;
 }
 
+// AACHEN: Function signature changed to avoid returning std::string.
+// Change usage of `bool` for C.
 char* DecimalLatitudeToLORAN( double decimalDegrees )
 {
    char* buf = malloc(16);
    char cardinal;
 
-   bool negative = false;
+   _Bool negative = 0/*false*/;
    if ( decimalDegrees < 0 )
-      negative = true;
+      negative = 1/*true*/;
    decimalDegrees = fabs( decimalDegrees );
 
    int degrees = (int)(decimalDegrees);
    int minutes = (int)((((decimalDegrees - degrees) * 100)*60.0)/100.0);
    int decimalMin = ((int)(((decimalDegrees - degrees) * 100)*60.0) - minutes * 100);
 
-   if ( negative == true )
+   if (negative)
       cardinal = 'S';
    else
       cardinal = 'N';
@@ -141,21 +144,23 @@ char* DecimalLatitudeToLORAN( double decimalDegrees )
    return buf;
 }
 
+// AACHEN: Function signature changed to avoid returning std::string.
+// Change usage of `bool` for C.
 char* DecimalLongitudeToLORAN( double decimalDegrees )
 {
    char* buf = malloc(16);
    char cardinal;
 
-   bool negative = false;
+   _Bool negative = 0/*false*/;
    if ( decimalDegrees < 0 )
-      negative = true;
+      negative = 1/*true*/;
    decimalDegrees = fabs( decimalDegrees );
 
    int degrees = (int)(decimalDegrees);
    int minutes = (int)((((decimalDegrees - degrees) * 100)*60.0)/100.0);
    int decimalMin = ((int)(((decimalDegrees - degrees) * 100)*60.0) - minutes * 100);
 
-   if ( negative == true )
+   if (negative)
       cardinal = 'W';
    else
       cardinal = 'E';

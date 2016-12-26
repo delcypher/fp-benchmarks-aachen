@@ -11,7 +11,7 @@ name: wxpro
 schema_version: 0
 sources:
   - main.c
-  - wxpro/units.c
+  - units.c
 variants:
   meter_ft:
     dependencies:
