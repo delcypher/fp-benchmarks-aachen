@@ -1,0 +1,37 @@
+architectures:
+  - x86_64
+categories:
+  - real_world
+  - issta_2017
+  - aachen
+language: c99
+name: sorting_full_sym
+schema_version: 0
+sources:
+  - main.c
+  - C-Sorting-Algorithms/selectionSort.c
+variants:
+  doubles:
+    defines:
+      DOUBLES: null
+    dependencies:
+      klee_runtime: {}
+    description: >
+     Sorts a double array
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  floats:
+    defines:
+      FLOATS: null
+    dependencies:
+      klee_runtime: {}
+    description: >
+      Sorts an array containing non-nan symbolic floats
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Tests a selection sort implementation. This is a variant of `sorting`
+  but is not implemented as one to avoid interfering with the existing
+  benchmark.

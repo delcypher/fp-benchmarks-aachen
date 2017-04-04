@@ -1,4 +1,5 @@
 add_benchmark(sorting)
+add_benchmark(sorting_full_sym)
 add_subdirectory(gmp)
 add_benchmark(numerical_recipes)
 add_benchmark(libmatheval)
